@@ -1,0 +1,14 @@
+apiVersion: v1beta1
+kind: Pod
+id: web1
+desiredState:
+  manifest:
+    version: v1beta1
+    id: web1
+    containers:
+      - name: web
+        image: dockerfile/nginx
+        ports:
+          - containerPort: 80
+labels:
+  name: web1
