@@ -1,0 +1,15 @@
+[Unit]
+Description=Setup Network Environment
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStartPre=-/usr/bin/mkdir -p /opt/bin
+ExecStartPre=/usr/bin/curl -o /opt/bin/set-master-ip.sh -sSL https://storage.googleapis.com/vux/set-master-ip.sh
+ExecStartPre=/usr/bin/chmod +x /opt/bin/set-master-ip.sh
+ExecStart=/opt/bin/set-master-ip.sh
+RemainAfterExit=yes
+Type=oneshot
+
+[X-Fleet]
+Global=true
